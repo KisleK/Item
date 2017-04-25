@@ -10,29 +10,7 @@ class Employee
      @salary = input_options[:salary]
      @active = input_options[:active]
    end
- 
-   # def first_name
-   #   @first_name
-   # end
- 
-   # def last_name
-   #   @last_name
-   # end
- 
-   # def salary
-   #   @salary
-   # end
- 
-   # def active
-   #   @active
-   # end
- 
-   # def active=(new_active)
-   #   @active = new_active
-   # end
- 
- 
- 
+  
    def print_info
      puts "#{first_name} #{last_name} makes #{salary} a year."
    end
@@ -40,6 +18,18 @@ class Employee
      @salary = @salary * 1.05
    end
  end
+
+
+ class Manager < Employee
+    
+    def send_report
+      puts "Sending email...."
+
+      puts "email sent"
+
+    end
+
+  end
  
  employee_1 = Employee.new(                                  
                            first_name: "Jim",
@@ -48,17 +38,14 @@ class Employee
                            active: true
                            )
  employee_2 = Employee.new({first_name: "Maria", last_name: "Bamford", salary: 80000, active: true})
- #employee_1 same as employee_2///hash with {} and hash without
+ manager = Manager.new(
+                        first_name: "Patton",
+                        last_name: "Oswalt",
+                        salary: 100000,
+                        active: true
+                        )
  employee_1.print_info
  employee_2.print_info
- 
- # employee_2.give_annual_raise
- # employee_2.print_info
- # puts employee_2.first_name
- # puts employee_2.last_name
- # puts employee_2.salary
- # puts employee_2.active
- puts employee_1.active
- employee_1.active = false
- puts employee_1.active
- 
+ manager.print_info
+ manager.send_report
+ employee_1.send_report
