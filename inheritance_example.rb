@@ -1,4 +1,5 @@
 class Vehicle
+  attr_reader :speed, :direction
   def initialize
     @speed = 0
     @direction = 'north'
@@ -18,7 +19,14 @@ class Vehicle
 end
 
 class Car < Vehicle
+  attr_reader :make, :model, :color
 
+  def initialize(input_options)
+    super()
+    @make = input_options[:make]
+    @model = input_options[:model]
+    @color = input_options[:color]
+  end
   def honk_horn
     puts "Beeeeeeep!"
   end
@@ -26,17 +34,27 @@ end
 
 
 class Bike < Vehicle
+  attr_reader :gears, :type, :weight
+  def initialize(input_options)
+    super()
+    @gears = input_options[:gears]
+    @type = input_options[:type]
+    @wieght = input_options[:weight]
 
+  end
   def ring_bell
     puts "Ring ring!"
   end
 end
 
-vehicle = Vehicle.new
-car = Car.new
-bike = Bike.new
 
+
+
+
+car = Car.new({make: "chevy", model: "camero", color: "red"})
+bike = Bike.new({gears: "ten speed", type: "K2", weight: 10})
 
 car.honk_horn
 bike.ring_bell
-
+ puts car.color
+ puts bike.gears
