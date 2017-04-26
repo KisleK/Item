@@ -1,3 +1,13 @@
+#how to make a module
+module Reporting
+  def send_report
+    puts "Sending email..."
+    # use email sending library...
+    puts "Email sent!"
+  end
+end
+
+
 class Employee
   attr_reader :first_name, :last_name, :active
   attr_writer :active
@@ -24,15 +34,12 @@ employee1.print_info
 employee2.print_info
 
 class Manager < Employee
+
+  include Reporting
+
   def initialize(input_options)
     super(input_options)
     @employees = input_options[:employees]
-  end
-
-  def send_report
-    puts "Sending email..."
-    # use email sending library...
-    puts "Email sent!"
   end
 
   def give_all_raises
@@ -48,13 +55,26 @@ class Manager < Employee
 end
 
 manager = Manager.new(first_name: "Saron", last_name: "Yitbarek", salary: 100000, active: true, employees: [employee1, employee2])
-manager.print_info
+
+
+# manager.print_info
 # manager.send_report
-manager.give_all_raises
-employee1.print_info
-employee2.print_info
-manager.fire_all_employees
+# manager.give_all_raises
+# employee1.print_info
+# employee2.print_info
+# manager.fire_all_employees
 
+# employee1.active
+# employee2.active
 
-p employee1.active
-p employee2.active
+class Intern < Employee
+  include Reporting
+  
+end
+
+intern = Intern.new(
+                    first_name: "Jimmy",
+                    last_name: "Olsen",
+                    salary: 15000,
+                    active: true)
+

@@ -50,11 +50,12 @@ end
 
 
 
-
 car = Car.new({make: "chevy", model: "camero", color: "red"})
-bike = Bike.new({gears: "ten speed", type: "K2", weight: 10})
+
+bike = Bike.new({gears: "ten speed", type: "road", weight: 10})
 
 car.honk_horn
 bike.ring_bell
  puts car.color
  puts bike.gears
+ 
